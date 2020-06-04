@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>xxxxxx系统</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- STYLESHEETS -->
+    <!--[if lt IE 9
+      ]><script src="js/flot/excanvas.min.js"></script
+      ><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script
+      ><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script
+    ><![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/cloud-admin.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/themes/default.css"
+      id="skin-switcher"
+    />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- FONTS -->
+    <link
+      href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="navbar clearfix" id="header">
+      <div class="container">
+        <div class="navbar-brand">
+          <!-- COMPANY LOGO -->
+          <a href="index.html">
+            <img
+              src="img/logo/logo.png"
+              alt="Cloud Admin Logo"
+              class="img-responsive"
+              height="30"
+              width="120"
+            />
+          </a>
+          <!-- /COMPANY LOGO -->
+          <!-- TEAM STATUS FOR MOBILE -->
+          <div class="visible-xs">
+            <a href="#" class="team-status-toggle switcher btn dropdown-toggle">
+              <i class="fa fa-users"></i>
+            </a>
+          </div>
+          <!-- /TEAM STATUS FOR MOBILE -->
+          <!-- SIDEBAR COLLAPSE -->
+          <div id="sidebar-collapse" class="sidebar-collapse btn">
+            <i
+              class="fa fa-bars"
+              data-icon1="fa fa-bars"
+              data-icon2="fa fa-bars"
+            ></i>
+          </div>
+          <!-- /SIDEBAR COLLAPSE -->
+        </div>
+        <!-- NAVBAR LEFT -->
+        <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+          <li class="dropdown">
+            <a
+              href="#"
+              class="team-status-toggle dropdown-toggle tip-bottom"
+              data-toggle="tooltip"
+              title="了解一下"
+            >
+              <i class="fa fa-users"></i> <span class="name">关于我们</span>
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- /NAVBAR LEFT -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <ul class="nav navbar-nav pull-right">
+          <!-- BEGIN NOTIFICATION DROPDOWN -->
+          <li class="dropdown" id="header-notification">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell"></i> <span class="badge">7</span>
+            </a>
+            <ul class="dropdown-menu notification">
+              <li class="dropdown-title">
+                <span><i class="fa fa-bell"></i> 7 Notifications</span>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-success"
+                    ><i class="fa fa-user"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">5 users online. </span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>Just now</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-primary"
+                    ><i class="fa fa-comment"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">Martin commented.</span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>19 mins</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-warning"
+                    ><i class="fa fa-lock"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">DW1 server locked.</span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>32 mins</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-info"
+                    ><i class="fa fa-twitter"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">Twitter connected.</span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>55 mins</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-danger"
+                    ><i class="fa fa-heart"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">Jane liked. </span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>2 hrs</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="label label-warning"
+                    ><i class="fa fa-exclamation-triangle"></i
+                  ></span>
+                  <span class="body">
+                    <span class="message">Database overload.</span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>6 hrs</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="#"
+                  >See all notifications <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </li>
+            </ul>
+          </li>
+          <!-- END NOTIFICATION DROPDOWN -->
+          <!-- BEGIN INBOX DROPDOWN -->
+          <li class="dropdown" id="header-message">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope"></i> <span class="badge">3</span>
+            </a>
+            <ul class="dropdown-menu inbox">
+              <li class="dropdown-title">
+                <span><i class="fa fa-envelope-o"></i> 3 Messages</span>
+                <span
+                  class="compose pull-right tip-right"
+                  title="Compose message"
+                  ><i class="fa fa-pencil-square-o"></i
+                ></span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/avatars/avatar2.jpg" alt="" />
+                  <span class="body">
+                    <span class="from">Jane Doe</span>
+                    <span class="message">
+                      Duis autem vel eum iriure dolor in hendrerit in vulputate
+                      velit esse mole ...
+                    </span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>Just Now</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/avatars/avatar1.jpg" alt="" />
+                  <span class="body">
+                    <span class="from">Vince Pelt</span>
+                    <span class="message">
+                      Duis autem vel eum iriure dolor in hendrerit in vulputate
+                      velit esse mole ...
+                    </span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>15 min ago</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/avatars/avatar8.jpg" alt="" />
+                  <span class="body">
+                    <span class="from">Debby Doe</span>
+                    <span class="message">
+                      Duis autem vel eum iriure dolor in hendrerit in vulputate
+                      velit esse mole ...
+                    </span>
+                    <span class="time">
+                      <i class="fa fa-clock-o"></i> <span>2 hours ago</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="#"
+                  >See all messages <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </li>
+            </ul>
+          </li>
+          <!-- END INBOX DROPDOWN -->
+          <!-- BEGIN TODO DROPDOWN -->
+          <li class="dropdown" id="header-tasks">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-tasks"></i> <span class="badge">3</span>
+            </a>
+            <ul class="dropdown-menu tasks">
+              <li class="dropdown-title">
+                <span><i class="fa fa-check"></i> 6 tasks in progress</span>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="header clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">60%</span>
+                  </span>
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-success"
+                      role="progressbar"
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style="width: 60%;"
+                    >
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="header clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">25%</span>
+                  </span>
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-info"
+                      role="progressbar"
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style="width: 25%;"
+                    >
+                      <span class="sr-only">25% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="header clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">40%</span>
+                  </span>
+                  <div class="progress progress-striped">
+                    <div
+                      class="progress-bar progress-bar-warning"
+                      role="progressbar"
+                      aria-valuenow="40"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style="width: 40%;"
+                    >
+                      <span class="sr-only">40% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="header clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">70%</span>
+                  </span>
+                  <div class="progress progress-striped active">
+                    <div
+                      class="progress-bar progress-bar-danger"
+                      role="progressbar"
+                      aria-valuenow="70"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style="width: 70%;"
+                    >
+                      <span class="sr-only">70% Complete</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="header clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">65%</span>
+                  </span>
+                  <div class="progress">
+                    <div
+                      class="progress-bar progress-bar-success"
+                      style="width: 35%"
+                    >
+                      <span class="sr-only">35% Complete (success)</span>
+                    </div>
+                    <div
+                      class="progress-bar progress-bar-warning"
+                      style="width: 20%"
+                    >
+                      <span class="sr-only">20% Complete (warning)</span>
+                    </div>
+                    <div
+                      class="progress-bar progress-bar-danger"
+                      style="width: 10%"
+                    >
+                      <span class="sr-only">10% Complete (danger)</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="#"
+                  >See all tasks <i class="fa fa-arrow-circle-right"></i
+                ></a>
+              </li>
+            </ul>
+          </li>
+          <!-- END TODO DROPDOWN -->
+          <!-- BEGIN USER LOGIN DROPDOWN -->
+          <li class="dropdown user" id="header-user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img alt="" src="img/avatars/avatar3.jpg" />
+              <span class="username">John Doe</span>
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#"><i class="fa fa-user"></i> My Profile</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-cog"></i> Account Settings</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-eye"></i> Privacy Settings</a>
+              </li>
+              <li>
+                <a href="login.html"><i class="fa fa-power-off"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+          <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+        <!-- END TOP NAVIGATION MENU -->
+      </div>
+
+      <!-- TEAM STATUS -->
+      <div class="container team-status" id="team-status">
+        <div id="scrollbar"><div class="handle"></div></div>
+        <div id="teamslider">
+          <ul class="team-list">
+            <li class="current">
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <img src="img/wangyang.png" alt="" />
+                </span>
+                <span class="title"> 王洋 </span>
+                <span class="status">
+                  <div class="field">
+                    产品总监 <span class="pull-right fa fa-check"></span>
+                  </div>
+                  <div class="field">
+                    核心算法研发 <span class="pull-right fa fa-check"></span>
+                  </div>
+                </span>
+              </a>
+            </li>
+            <li class="current">
+              <a href="javascript:void(0);">
+                <span class="image"> <img src="img/wx.png" alt="" /> </span>
+                <span class="title"> 吴旭 </span>
+                <span class="status">
+                  <div class="field">
+                    项目经理 <span class="pull-right fa fa-check"></span>
+                  </div>
+                  <div class="field">
+                    产品项目架构、开发
+                    <span class="pull-right fa fa-check"></span>
+                  </div>
+                </span>
+              </a>
+            </li>
+            <li class="current">
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <img src="img/tiansuo.png" alt="" />
+                </span>
+                <span class="title"> 田锁 </span>
+                <span class="status">
+                  <div class="field">
+                    开发经理 <span class="pull-right fa fa-check"></span>
+                  </div>
+                  <div class="field">
+                    前后端开发&测试 <span class="pull-right fa fa-check"></span>
+                  </div>
+                </span>
+              </a>
+            </li>
+            <li class="current">
+              <a href="javascript:void(0);">
+                <span class="image"> <img src="img/xh.png" alt="" /> </span>
+                <span class="title"> 许航 </span>
+                <span class="status">
+                  <div class="field">
+                    运维经理 <span class="pull-right fa fa-check"></span>
+                  </div>
+                  <div class="field">
+                    运维保障 <span class="pull-right fa fa-check"></span>
+                  </div>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /TEAM STATUS -->
+    </header>
+    <!-- /HEADER -->
+
+    <!-- PAGE -->
+    <section id="page">
+      <!-- SIDEBAR -->
+      <div id="sidebar" class="sidebar">
+        <div class="sidebar-menu nav-collapse">
+          <div class="divide-20"></div>
+          <!-- SEARCH BAR -->
+          <div id="search-bar">
+            <input class="search" type="text" placeholder="Search" /><i
+              class="fa fa-search search-icon"
+            ></i>
+          </div>
+          <!-- /SEARCH BAR -->
+
+          <!-- SIDEBAR MENU -->
+          <ul>
+            <li>
+              <a href="admin.html">
+                <i class="fa fa-tachometer fa-fw"></i>
+                <span class="menu-text">用户管理</span>
+              </a>
+            </li>
+            <li>
+              <a class="" href="Non_Compartment.html"
+                ><i class="fa fa-desktop fa-fw"></i>
+                <span class="menu-text">非房室模型分析</span></a
+              >
+            </li>
+            <li>
+              <a class="" href="#"
+                ><i class="fa fa-envelope-o fa-fw"></i>
+                <span class="menu-text">算法二</span>
+              </a>
+            </li>
+          </ul>
+          <!-- /SIDEBAR MENU -->
+        </div>
+      </div>
+      <!-- /SIDEBAR -->
+      <div id="main-content">
+        <div class="container">
+          <div class="row">
+            <div id="content" class="col-lg-12">
+              <!-- PAGE HEADER -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="page-header">
+                    <!-- STYLER -->
+
+                    <!-- /STYLER -->
+                    <!-- BREADCRUMBS -->
+                    <ul class="breadcrumb">
+                      <li><i class="fa fa-home"></i> <a href="#">Home</a></li>
+                      <li>Welcome</li>
+                    </ul>
+                    <!-- /BREADCRUMBS -->
+                    <div class="clearfix">
+                      <h3 class="content-title pull-left">问卷设计</h3>
+                    </div>
+                    <div class="description">survey design</div>
+                  </div>
+                </div>
+              </div>
+              <!-- /PAGE HEADER -->
+              <!-- row -->
+              <div id="main">
+                <section class="main-container">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <!-- BOX -->
+                      <div class="box border lite">
+                        <div class="box-title">
+                          <h4><i class="fa fa-bars"></i>操作</h4>
+                        </div>
+                        <div class="box-body center">
+                          <p>
+                            <button
+                              class="btn btn-block btn-primary"
+                              id="select-type"
+                            >
+                              增加选择题
+                            </button>
+                            <button
+                              class="btn btn-block btn-info"
+                              id="mixed-type"
+                            >
+                              增加混合题
+                            </button>
+                            <button
+                              class="btn btn-block btn-grey"
+                              id="inputtext-type"
+                            >
+                              增加答题
+                            </button>
+                            <button
+                              class="btn btn-block btn-success"
+                              id="save-survey"
+                            >
+                              保存
+                            </button>
+                          </p>
+                        </div>
+                      </div>
+                      <!-- /BOX -->
+                    </div>
+                    <div class="col-md-10">
+                      <!-- BOX -->
+                      <div class="box">
+                        <div class="box-title">
+                          <h4><i class="fa fa-quote-left"></i>问卷设计</h4>
+                        </div>
+                        <div class="box-body font-400">
+                          <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label"
+                                >问卷名称</label
+                              >
+                              <div class="col-sm-9">
+                                <input
+                                  class="form-control sname"
+                                  type="text"
+                                  placeholder="输入问卷名称"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label"
+                                >问卷描述</label
+                              >
+                              <div class="col-sm-9">
+                                <textarea
+                                  class="form-control sdesc"
+                                  rows="4"
+                                  cols="50"
+                                  placeholder="输入问卷描述"
+                                ></textarea>
+                              </div>
+                            </div>
+
+                            <div class="divide-40"></div>
+
+                            <div id="question-body"></div>
+                          </form>
+                        </div>
+                      </div>
+                      <!-- /BOX -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /PAGE -->
+    <!-- JAVASCRIPTS -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQUERY -->
+    <script src="js/jquery/jquery-2.0.3.min.js"></script>
+    <!-- JQUERY UI -->
+    <script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="bootstrap-dist/js/bootstrap.min.js"></script>
+
+    <!-- SLIMSCROLL -->
+    <script
+      type="text/javascript"
+      src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"
+    ></script>
+    <!-- COOKIE -->
+    <script
+      type="text/javascript"
+      src="js/jQuery-Cookie/jquery.cookie.min.js"
+    ></script>
+
+    <!-- PIN -->
+    <script type="text/javascript" src="js/jquery.pin.js"></script>
+    <!-- CUSTOM SCRIPT -->
+    <script src="js/script.js"></script>
+    <script>
+      // jQuery.fn.extend({
+      //     scrollTo: function (speed, easing) {
+      //         return this.each(function () {
+      //             var targetOffset = $(this).offset().top;
+      //             $("html,body").animate({
+      //                     scrollTop: targetOffset
+      //                 },
+      //                 speed,
+      //                 easing
+      //             );
+      //             // $('.main-container').animate({scrollTop: targetOffset}, speed, easing);
+      //         });
+      //     }
+      // });
+      jQuery(document).ready(function() {
+        //	App.setPage("widgets_box");  //Set current page
+        App.init(); //Initialise plugins and elements
+
+        var nquestion = 0;
+
+        function increase_nquestion() {
+          nquestion = nquestion + 1;
+          return nquestion;
+        }
+
+        function decrease_nquestion() {
+          if (nquestion == 0) return 0;
+          else {
+            nquestion = nquestion - 1;
+            return nquestion;
+          }
+        }
+
+        //重新计算题号
+        function recompute_nquestion() {
+          var num = 1;
+          $(".question-number").each(function() {
+            $(this).text(num);
+            num = num + 1;
+          });
+        }
+
+        //增加是否为多选题
+        $("body").on("click", ".can-multi", function() {
+          var text = $(this).text();
+          if (text == "单选题") {
+            $(this)
+              .parents(".question-row")
+              .addClass("multi");
+            $(this).text("多选题");
+          } else {
+            $(this)
+              .parents(".question-row")
+              .removeClass("multi");
+            $(this).text("单选题");
+          }
+        });
+        //增加题目选项
+        $("body").on("click", ".add-choose", function() {
+          //TODO
+          var choice_code = $(this)
+            .parents(".question-row")
+            .find(".select-seq:last")
+            .text()
+            .charCodeAt();
+          console.log(choice_code);
+          if (!isNaN(choice_code)) {
+            next_choice_code = String.fromCharCode(choice_code + 1);
+          } else {
+            next_choice_code = "A";
+          }
+          // var html =
+          //     "<div><span class='select-seq'>" + next_choice_code +
+          //     "</span><span>&nbsp;</span><input class='question' type='text' placeholder='请输入选项' /><a href='#' class='remove-select' >x</a></div>";
+          var html =
+            "<div class='select-seq'><label class='col-sm-3 control-label'></label>" +
+            "<div class='col-sm-8 '>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon select-num'>" +
+            next_choice_code +
+            "</span>" +
+            "<input type='text' class='form-control abody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-select' type='button'>删除</button>" +
+            "</span></div></div></div>";
+          $(this)
+            .parents(".question-row")
+            .find(".answer")
+            .append(html);
+          // $(this).parents('.question-row').scrollTo(100);
+        });
+
+        //移除选项
+        $("body").on("click", ".remove-select", function() {
+          var code = 65;
+          var that = $(this).parents(".answer");
+          $(this)
+            .parents(".select-seq")
+            .remove();
+          $(that)
+            .find(".select-num")
+            .each(function() {
+              char_code = String.fromCharCode(code);
+              $(this).text(char_code);
+              code = code + 1;
+            });
+          //   $(that)
+          //     .parent()
+          //     .scrollTo(100);
+        });
+        //移除问题
+        $("body").on("click", ".remove-question", function() {
+          $(this)
+            .parents(".question-row")
+            .remove();
+          recompute_nquestion();
+          decrease_nquestion();
+        });
+
+        //功能选项
+        //单选题
+        $("#select-type").click(function() {
+          num = increase_nquestion();
+
+          var html =
+            "<div class='question-row ' choice=‘single’>" +
+            "<div class='form-group'>" +
+            "<label class='col-sm-3 control-label'>请输入问题</label>" +
+            "<div class='col-sm-8'><div class='input-group'>" +
+            "<span class='input-group-addon question-number'>" +
+            num +
+            "</span>" +
+            "<input type='text' class='form-control qbody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-info add-choose' type='button'>增加</button>" +
+            "</span>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-question' type='button'>删除</button>" +
+            "</span>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-default can-multi' type='button'>单选题</button>" +
+            "</span>" +
+            "</div></div></div>" +
+            "<div class='form-group'><div class='answer'>" +
+            "<div class='select-seq'><label class='col-sm-3 control-label'></label>" +
+            "<div class='col-sm-8 '>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon select-num'>A</span>" +
+            "<input type='text' class='form-control abody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-select' type='button'>删除</button>" +
+            "</span></div><div></div></div></div></div></div></div>";
+
+          $("#question-body").append(html);
+        });
+
+        //混合型
+        $("#mixed-type").click(function() {
+          num = increase_nquestion();
+
+          var html =
+            "<div class='question-row' choice=‘mixed’>" +
+            "<div class='form-group'>" +
+            "<label class='col-sm-3 control-label'>请输入问题</label>" +
+            "<div class='col-sm-8'><div class='input-group'>" +
+            "<span class='input-group-addon question-number'>" +
+            num +
+            "</span>" +
+            "<input type='text' class='form-control qbody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-info add-choose' type='button'>增加</button>" +
+            "</span>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-question' type='button'>删除</button>" +
+            "</span>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-default can-multi' type='button'>单选题</button>" +
+            "</span>" +
+            "</div></div></div>" +
+            "<div class='form-group'><div class='answer'>" +
+            "<div class='select-seq'><label class='col-sm-3 control-label'></label>" +
+            "<div class='col-sm-8 '>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon select-num'>A</span>" +
+            "<input type='text' class='form-control abody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-select' type='button'>删除</button>" +
+            "</span></div><div></div></div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='answer-input'>" +
+            "<label class='col-sm-3 control-label'></label>" +
+            "<div class='col-sm-8'>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon '>如果没有请输入答案：</span>" +
+            "<input type='text' class='form-control'>" +
+            "</div>" +
+            "</div></div></div></div>";
+          $("#question-body").append(html);
+        });
+
+        //输入型
+        $("#inputtext-type").click(function() {
+          num = increase_nquestion();
+
+          var html =
+            "<div class='question-row' choice='input'>" +
+            "<div class='form-group'>" +
+            "<label class='col-sm-3 control-label'>请输入问题</label>" +
+            "<div class='col-sm-8'><div class='input-group'>" +
+            "<span class='input-group-addon question-number'>" +
+            num +
+            "</span>" +
+            "<input type='text' class='form-control qbody'>" +
+            "<span class='input-group-btn'>" +
+            "<button class='btn btn-danger remove-question' type='button'>删除</button>" +
+            "</span>" +
+            "</div></div></div>" +
+            "<div class='form-group'><div class='answer'>" +
+            "<div class='select-seq'><label class='col-sm-3 control-label'></label>" +
+            "<div class='col-sm-8 '>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon'>请输入答案：</span>" +
+            "<input type='text' class='form-control'>" +
+            "</div><div></div></div>" +
+            "</div></div>";
+          $("#question-body").append(html);
+        });
+        //提交
+        $("#save-survey").click(function() {
+          var form = new Object();
+          form.name = $(".sname").val();
+          form.desc = $(".sdesc").val();
+          form.questions = [];
+          //循环question
+          $(".qbody").each(function() {
+            questions = new Object();
+            questions.qbody = $(this).val();
+            parent = $(this).parents(".question-row");
+            questions.num = $(this)
+              .parent()
+              .find(".question-number")
+              .text();
+            questions.type = $(parent).attr("choice");
+            if ($(parent).hasClass("multi")) {
+              questions.multi = 1;
+            } else {
+              questions.multi = 0;
+            }
+            questions.answers = [];
+            $(parent)
+              .find(".abody")
+              .each(function() {
+                txt = $(this).val();
+                seq = $(this)
+                  .parent()
+                  .find(".select-num")
+                  .text();
+
+                selects = new Object();
+                selects.seq = seq;
+                selects.txt = txt;
+                questions.answers.push(selects);
+              });
+            form.questions.push(questions);
+          });
+          console.log(JSON.stringify(form));
+        });
+      });
+    </script>
+    <!-- /JAVASCRIPTS -->
+  </body>
+</html>

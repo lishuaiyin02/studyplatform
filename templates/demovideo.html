@@ -1,0 +1,72 @@
+{% extends 'homepage.html' %}
+
+{% block container %}
+<script>
+
+</script>
+<div class="row">
+	<div class="col-md-9">
+		<!-- BOX -->
+		<div class="box border blue">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>实操视频</h4>
+			</div>
+		</div> 
+
+		<div class="form-group">
+
+			<div class="col-sm-3" id=div1>
+				<p>{{le}}</p>
+				<div class='vid' style="background-color: rgb(87, 88, 88);width:850; height:400">
+					<video src="/static/materials/{{le}}.mp4" width="850" height="400" controls autoplay -webkit-filter=grayscale(100%)>video.currentTime</video>
+
+				</div>
+				<iframe src="/static/materials/{{le}}.txt?={{randomnumber}}" name=iframe1 width="850" height="400"></iframe>
+			
+				<script>
+					// //在iframe1中已经显示有TXT文本问的内答容，下面代码是把TXT中的内容中的HTML标记取消，只取得文本
+					// var txtval = ifram1.body.innerText;
+					// //把文本显示在div1中
+					// div1.innerHTML = txtval;
+					
+				</script>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="col-md-3">
+		<!-- BOX -->
+		<div class="box">
+
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>功能介绍</h4>
+			</div>
+			<div class="box-body font-400">
+				<p>左侧视频为每个课程对应的实操视频以及文字解说，可点击下方按钮获取资源进行尝试练习</p>
+
+				<p>点击下方按钮进行申请资源，该网址每天早上8点半更新，</p>
+				<form class="form-horizontal" method="POST" action="/demovideo/{{le}}">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+					<span class="form-group">
+						<center>
+							<button class="btn btn-danger tip-left" type="submit" name="submit" value="getURL" title="申请资源">获取训练资源</button>
+							<!-- <button class="btn btn-default" style="margin-bottom: 10px;" type="submit" name="submit" value="getURL">getURL</button> -->
+						</center>
+					</span>
+					<div class="shuiping" style="display:inline">
+					<label class="control-label" style="margin: auto;">训练网址:</label>
+					
+							<!-- <input type="text" name="url" value="{{url}}" class="form-control" style="color:black"> -->
+					<p><a href="{{url}}" class='link' style="font-size: medium;margin: auto;">{{url}}</a></p>
+						
+					
+				</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

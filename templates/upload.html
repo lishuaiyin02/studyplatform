@@ -1,0 +1,50 @@
+{% extends 'homepage.html' %}
+
+{% block container %}
+<script>
+
+</script>
+<div class="row">
+	<div class="col-md-9">
+		<!-- BOX -->
+		<div class="box border blue">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>上传文件</h4>
+			</div>
+		</div>
+
+		<div class="form-group">
+
+		
+		</div>
+
+	</div>
+	<div class="col-md-3">
+		<!-- BOX -->
+		<div class="box">
+
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>功能介绍</h4>
+			</div>
+			<div class="box-body font-400">
+
+				<p>上传所需的文件资料</p>
+			
+					<!-- <button class="btn btn-default" enctype=multipart/form-data name="submit" value="Upload">Upload</button> -->
+
+						<form action="" method=post enctype=multipart/form-data>
+							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+							<p><input type=file name=file>
+								<input type=submit name="submit" value='Upload'>
+							   
+						  </form>
+					
+	
+				
+
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

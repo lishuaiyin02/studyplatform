@@ -1,0 +1,84 @@
+<!-- 模板的语法应当符合Jinja语法 -->
+<!-- extend from homepage layout -->
+{% extends "homepage.html" %}
+{% block container %}
+<script>
+
+</script>
+<div class="row">
+	<div class="col-md-9">
+		<!-- BOX -->
+		<div class="box border blue">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>我的资料</h4>
+			</div>
+			<div class="box-body ">
+				<form class="form-horizontal" method="post" action="/reccase/">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+					<div class="form-group">
+                        <label class="col-sm-3 control-label">员工姓名:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="casename" value="{{casename}}" class="form-control">
+							</div>
+                        </div>
+                       
+						<label class="col-sm-3 control-label">所属部门:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="casename" value="{{casename}}" class="form-control">
+							</div>
+						</div>
+						<label class="col-sm-3 control-label">所在岗位:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="version" value="{{version}}" class="form-control">
+							</div>
+                        </div>
+                        <label class="col-sm-3 control-label">联系电话:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="version" value="{{version}}" class="form-control">
+							</div>
+                        </div>
+                        <label class="col-sm-3 control-label">手机号码:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="version" value="{{version}}" class="form-control">
+							</div>
+                        </div>
+                        <label class="col-sm-3 control-label">Email:</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<input type="text" name="version" value="{{version}}" class="form-control">
+							</div>
+						</div>
+						<span class="form-group">
+							<center>
+								<!-- <button class="btn btn-default" type="submit" name="submit" value="start">Start</button> -->
+								<button class="btn btn-default" type="submit" name="submit" value="stop">确认修改</button>
+							</center>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<!-- BOX -->
+		<div class="box">
+			<div class="box-title">
+				<h4><i class="fa fa-quote-left"></i>功能介绍</h4>
+
+			</div>
+			<div class="box-body font-400">
+                <!-- <h3>我的资料</h3> -->
+                <h4>主要是对自己的资料进行修改</h4>
+				<p>1.填写对应的信息</p>
+				<p>2.点击确认修改按钮</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
